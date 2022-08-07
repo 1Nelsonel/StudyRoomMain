@@ -89,111 +89,11 @@
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="page-about.html">About</a></li>
-                        <li class="dropdown ttmenu-half"><a href="#" data-toggle="dropdown"
-                                class="dropdown-toggle">Courses <b class="fa fa-angle-down"></b></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <div class="ttmenu-content">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="box">
-                                                    <ul>
-                                                        <li><a href="course-list.html">Courses List</a></li>
-                                                        <li><a href="course-grid.html">Courses Grid</a></li>
-                                                        <li><a href="course-filterable.html">Courses
-                                                                Filterable</a></li>
-                                                        <li><a href="course-single.html">Single Course</a></li>
-                                                        <li><a href="course-quiz.html">Take a Quiz</a></li>
-                                                        <li><a href="course-achievements.html">Achievements</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="box">
-                                                    <ul>
-                                                        <li><a href="course-instructors.html">Course
-                                                                Instructors</a></li>
-                                                        <li><a href="forums.html">Community Forums</a></li>
-                                                        <li><a href="course-login.html">Login & Register</a>
-                                                        </li>
-                                                        <li><a href="course-account.html">Edit Your Account</a>
-                                                        </li>
-                                                        <li><a href="course-testimonials.html">Happy
-                                                                Students</a></li>
-                                                        <li><a href="course-faqs.html">Friendly Asked
-                                                                Questions</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-md-3 col-sm-6 nopadding">
-                                                <img class="img-thumbnail"
-                                                    src="upload/xservice_01.png.pagespeed.ic.2iuJZT3CaV.png" alt="">
-                                            </div>
-                                            <div class="col-md-3 col-sm-6 nopadding">
-                                                <img class="img-thumbnail"
-                                                    src="upload/xservice_02.png.pagespeed.ic.c6RThoxSWC.png" alt="">
-                                            </div>
-                                            <div class="col-md-3 col-sm-6 nopadding">
-                                                <img class="img-thumbnail"
-                                                    src="upload/xservice_03.png.pagespeed.ic.E_Ew4wn4ZP.png" alt="">
-                                            </div>
-                                            <div class="col-md-3 col-sm-6 nopadding">
-                                                <img class="img-thumbnail"
-                                                    src="upload/xservice_04.png.pagespeed.ic.NGi9jRXTXk.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown ttmenu-half"><a href="#" data-toggle="dropdown"
-                                class="dropdown-toggle">Features <b class="fa fa-angle-down"></b></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <div class="ttmenu-content">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="box">
-                                                    <ul>
-                                                        <li><a href="page-services.html">Our Services</a></li>
-                                                        <li><a href="page-contact.html">Contact Us</a></li>
-                                                        <li><a href="page-pricing.html">Pricing Tables</a></li>
-                                                        <li><a href="page-shortcodes.html">Shortcodes</a></li>
-                                                        <li><a href="page-typography.html">Typography</a></li>
-                                                        <li><a href="page-fullwidth.html">Page Fullwidth</a>
-                                                        </li>
-                                                        <li><a href="page-sidebar.html">Page Sidebar</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="box">
-                                                    <ul>
-                                                        <li><a href="page-shop.html">Shop Layout</a></li>
-                                                        <li><a href="page-shop-single.html">Shop Single</a></li>
-                                                        <li><a href="page-shop-single-alt.html">Shop Single
-                                                                Alt</a></li>
-                                                        <li><a href="page-shop-cart.html">Shopping Cart</a></li>
-                                                        <li><a href="blog.html">Blog & News</a></li>
-                                                        <li><a href="single.html">Single Blog</a></li>
-                                                        <li><a href="page-not-found.html">404 - Not Found</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="forums.html">Community</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="page-contact.html">Contact</a></li>
+                        <li><a href="{% url 'about' %}">About</a></li>
+                        <li><a href="{% url 'course' %}">Courses</a> </li>
+                        <li><a href="{% url 'community' %}">Community</a></li>
+                        <li><a href="{% url 'blog' %}">Blog</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a class="btn btn-primary" href="course-login.html"><i class="fa fa-sign-in"></i>
