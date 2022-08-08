@@ -16,18 +16,18 @@
                         <div class="col-md-6 text-right">
                             <div class="bread">
                                 <ol class="breadcrumb">
-                                    <li><a href="#">Home</a></li>
+                                    <li><a href="{% url 'home' %}">Home</a></li>
                                     <li class="active">Blog</li>
                                 </ol>
                             </div>
                         </div>
                     </div>
                 </div>
-                {% for blog in blogs %}
+
                 <div class="blog-wrapper">
                     <div class="blog-title">
                         <a class="category_title" href="#" title="">{{ blog.category }}</a>
-                        <h2><a href="{% url 'blogDetail' blog.id %}" title="">{{ blog.title }}</a></h2>
+                        <h2><a href="" title="">{{ blog.title }}</a></h2>
                         <div class="post-meta">
                             <span>
                                 <i class="fa fa-user"></i>
@@ -39,7 +39,7 @@
                             </span>
                             <span>
                                 <i class="fa fa-comments"></i>
-                                <a href="#">{{blog.comments.count}} Comments</a>
+                                <a href="#">21 Comments</a>
                             </span>
                             <span>
                                 <i class="fa fa-eye"></i>
@@ -48,49 +48,46 @@
                         </div>
                     </div>
                     <div class="blog-image">
-                        <a href="{% url 'blogDetail' blog.id %}" title=""><img src="{{ blog.image.url }}" alt=""
-                               width="100%" class="img-responsive"></a>
+                        <a href="" title=""><img src="{{ blog.image.url }}" alt="" width="100%"
+                                class="img-responsive"></a>
                     </div>
                     <div class="blog-desc">
                         <div class="post-date">
                             <span class="day">{{ blog.created | date }}</span>
                             <span class="month">Posted</span>
                         </div>
-                        <p>{{ blog.description |truncatewords:35 }}</p>
-                        <a href="{% url 'blogDetail' blog.id %}" class="readmore">Read More</a>
+                        <p>{{ blog.description |escape |linebreaks }}</p>
+
                     </div>
                 </div>
-                {% endfor %}
-                
+
                 <hr class="invis">
-                <nav class="text-center">
-                    <ul class="pagination">
-                        <li>
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            <div id="sidebar" class="col-md-4 col-sm-4 col-xs-12">
-                <div class="widget">
-                    <div class="searchform">
-                        <form>
-                            <input type="text" class="form-control" placeholder="What you are looking for?">
-                        </form>
-                    </div>
+
+                <div class="widget-title">
+                    <h4>Leave a comment</h4>
+                    <hr>
                 </div>
+                <div id="contact_form" class="contact_form row">
+                    <div id="message"></div>
+                    <form id="contactform" method="post">
+                        {% csrf_token %}
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <input type="text" name="user" id="name" class="form-control" placeholder="Name *">
+                            <input type="text" name="email" id="email" class="form-control" placeholder="Email *">
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                            <textarea class="form-control" name="body" id="comments" rows="6" placeholder=""></textarea>
+                            <button type="submit" class="btn btn-primary btn-block">Send
+                                Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+            <div id="sidebar" class="col-md-4 col-sm-4 col-xs-12">
+
                 <div class="widget">
                     <div class="widget-title">
                         <h4>Subscribe Us</h4>
@@ -106,35 +103,35 @@
                 </div>
                 <div class="widget">
                     <div class="widget-title">
-                        <h4>Popular Categories</h4>
+                        <h4>Popular Courses</h4>
                         <hr>
                     </div>
                     <ul class="popular-courses">
-                        {% for category in categories %}
+                        {% for blog in blogs %}
                         <li>
-                            <a class="font-weight-bold" href="single-course.html"> {{ category.name }} </a>
+                            <a href="#" title=""><img class="img-thumbnail img-responsive"
+                                    src="{{blog.image.url}}" width="100%" height="100" alt=""></a> 
                         </li>
-                        <br>
                         {% endfor %}
                     </ul>
                 </div>
                 <div class="widget">
                     <div class="widget-title">
-                        <h4>Recent Tweets</h4>
+                        <h4>Recent Comments</h4>
                         <hr>
                     </div>
                     <div class="twitter-widget">
                         <ul class="latest-tweets">
+                            {% for comment in comments %}
                             <li>
-                                <p><a href="#" title="">@Mark</a> Lorem ipsum dolor sit amet, consectetur adipiscing
-                                    elit. Integer lorem quam.</p>
-                                <span>2 hours ago</span>
+                                <p>
+                                    <i class="fa fa-comments"></i>
+                                    <a href="#">{{comment.user}}</a>
+                                    {{comment.body}}
+                                </p>
+                                <span>{{ comment.created | timesince}}: ago</span>
                             </li>
-                            <li>
-                                <p><a href="#" title=""></a> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Integer lorem quam.</p>
-                                <span>2 hours ago</span>
-                            </li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
